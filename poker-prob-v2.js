@@ -4,17 +4,32 @@ const NUM_TRIALS = 3;
  * returns a card as a number, 0 -- 51.
  * 0 as SA, 1 as HA, 2 as DA, 3 as CA, 4 as SK, ...
  */
+// const card = ['SA', 'HA', 'DA', 'CA', 'SK', ]
+// const suits = "SHDC";
+// const numbers = "23456789TQKA";
+
+
+
 function drawACard() {
   return Math.floor(Math.random() * 52);
 }
-
+//console.log(drawACard())
 /**
  * returns an array of cards, i.e., an array of five 0-51 integers.
  * [0, 4, 8, 12, 16] indicates [SA, SK, SQ, SJ, ST]
  */
 function drawHand() {
-  // Your code here.
+  let hand = [];
+
+  while (hand.length < 5) {
+    let card = drawACard();
+    if (!hand.includes(card)) hand.push(card);
+  }
+
+  sortHand(hand);
+  return hand;
 }
+
 
 /**
  * checks if all cards in the input hand are of the same suit.
